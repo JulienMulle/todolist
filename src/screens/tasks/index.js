@@ -17,8 +17,9 @@ export default function TaskScreen() {
 
     return (
         <>
-            <Header />
+            
             <FlatList 
+            ListHeaderComponent={<Header />}
             data={tasks}
             //si je n'ai pas d'id, j'utilise la fonction de keyExtractore qui va recevoir item qui a l'index du tableau, avec la methode toString, on aura un index unique parce que chaques index dans un tableau est unique
 
