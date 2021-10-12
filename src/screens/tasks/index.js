@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet, Text, FlatList } from 'react-native';
 import Header from '../../components/Header';
 
 export default function TaskScreen() {
@@ -8,12 +8,20 @@ export default function TaskScreen() {
     const [tasks, setTasks] = useState([
         {title: "Hello l'ami du bon gout !", isCompleted: false}
     ])
+
+    //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
+    const renderItem = ({item}) => {
+        return <Text>{item.title}</Text>
+    }
     //asyncStorage
 
     return (
         <>
             <Header />
-            {tasks.map(t => <Text>{t.title}</Text>)}
+            <FlatList 
+            data={tasks}
+            keyExtractor={(item, index) =>index.toString()}
+            renderItem={renderItem}/>
         </>
     )
 }
