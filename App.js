@@ -1,12 +1,14 @@
 
 import React from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { SafeAreaView, StyleSheet, Text } from 'react-native';
 import TaskScreen from './src/screens/tasks';
 
  const App = () =>{
   return (
-   
-      <TaskScreen />
+    <SafeAreaView>
+        <TaskScreen />
+    </SafeAreaView>
+      
       
   );
 };
