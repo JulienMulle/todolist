@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, FlatList } from 'react-native';
+import { FlatList } from 'react-native';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
@@ -11,11 +11,11 @@ export default function TaskScreen() {
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
     const renderItem = ({item}) => {
-        return <TaskTile task={item} onUpdateTask={onUpdateTask}/>
+        return <TaskTile task={item}
+         onUpdateTask={onUpdateTask} 
+         onDeleteTask={onDeleteTask}
+         />
     }
-
-    //ajouter une fonction pour ajouter une tache au state
-    //passer cette foncgtion à notre form
     
     const onAddTask= (title) => {
         setTasks([...tasks,{
@@ -43,7 +43,19 @@ export default function TaskScreen() {
 
         setTasks(newTasks)
     }
-    //asyncStorage
+    
+    const onDeleteTask = (id) => {
+        let newTasks = []
+        tasks.forEach(t=>{
+            if (t.id !== id) 
+            {
+            newTasks.push(t)
+            return
+            }
+        })
+        setTasks(newTasks)
+
+    }
 
     return ( 
             <FlatList 

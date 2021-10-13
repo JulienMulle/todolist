@@ -4,14 +4,14 @@ import { Text, Image, StyleSheet,View, Pressable } from 'react-native';
 import outline_circle from "../../../assets/Icons/outline_circle.png";
 import icon_bin from "../../../assets/Icons/icon_bin.png";
 
-export default function TaskTile({task, onUpdateTask}) {
+export default function TaskTile({task, onUpdateTask, onDeleteTask}) {
 
     const onChageStatus = () =>{
         onUpdateTask(task.id)
     }
 
-    const onDeleteTask = ()=>{
-
+    const _onDeleteTask = ()=>{
+        onDeleteTask(task.id)
     }
 
     return (
@@ -25,7 +25,7 @@ export default function TaskTile({task, onUpdateTask}) {
                 <Text style={styles.title}>{task.title}</Text>
             </Pressable> 
             <Pressable
-            onPress={onDeleteTask}
+            onPress={_onDeleteTask}
             >   
                 <Image
                 style={styles.check}
