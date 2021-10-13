@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import { StyleSheet, Text, FlatList } from 'react-native';
 import Header from '../../components/Header';
+import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
 
 export default function TaskScreen() {
@@ -20,7 +21,12 @@ export default function TaskScreen() {
             <FlatList 
             //scroll infini avec chargement des données
             //onEndReached={()=> loadData}
-            ListHeaderComponent={<Header />}
+            ListHeaderComponent={
+            <>
+            <Header />
+            <TaskForm />
+            </>
+            }
             contentContainerStyle={{flexGrow:1}}
             data={tasks}
             //si je n'ai pas d'id, j'utilise la fonction de keyExtractore qui va recevoir item qui a l'index du tableau, avec la methode toString, on aura un index unique parce que chaques index dans un tableau est unique
