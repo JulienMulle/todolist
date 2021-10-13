@@ -19,7 +19,7 @@ export default function TaskScreen() {
     return ( 
             <FlatList 
             //scroll infini avec chargement des données
-            onEndReached={()=> loadData}
+            //onEndReached={()=> loadData}
             ListHeaderComponent={<Header />}
             contentContainerStyle={{flexGrow:1}}
             data={tasks}

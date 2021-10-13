@@ -1,30 +1,45 @@
 import React from 'react'
-import { Text, Image, StyleSheet } from 'react-native';
+import { Text, Image, StyleSheet,View } from 'react-native';
 
 import outline_circle from "../../../assets/Icons/outline_circle.png";
 import icon_bin from "../../../assets/Icons/icon_bin.png";
 
 export default function TaskTile({task}) {
     return (
-        <>
-        {/*voir doc reactnative /image pour les png et le style adequate */}
-            <Image
-            style={styles.check}
-            source={outline_circle}
-            />
-            <Text>{task.title}</Text>
-            <Image
-            style={styles.check}
-            source={icon_bin}
-            />
-        </>
+        <View style={styles.container}>
+            <View style={styles.subContainer}>
+                <Image
+                style={styles.check}
+                source={outline_circle}
+                />
+                <Text style={styles.title}>{task.title}</Text>
+            </View>    
+                <Image
+                style={styles.check}
+                source={icon_bin}
+                />           
+        </View>
     )
 }
 
 const styles = StyleSheet.create({
-    check: {
-        width:56,
-        height:56,
+    container:{
+        flexDirection:"row",
+        alignItems:"center",
+        padding:20,
+        justifyContent: "space-between",
+    },
+    subContainer:{
+        flexDirection:"row",
+        alignItems:"center",
+    },
+    title:{
+        marginLeft:20,
+        fontSize: 16,
+    },
+    check:{
+        width:26,
+        height:26,
     }
 })
 
