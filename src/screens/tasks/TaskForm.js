@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, StyleSheet } from 'react-native';
 
 export default function TaskForm() {
     const [newTask, setNewTask] = useState();
@@ -10,10 +10,18 @@ export default function TaskForm() {
     return (
         <View>
             <TextInput 
-            style={{}}
+            style={styles.input}
             onChangeText={onChangeText}
             value={newTask}
+            placeholder="Nouvelle Tâche"
             />
         </View>
     )
 }
+
+const styles = StyleSheet.create({
+    input:{
+        borderColor:"black",
+        borderWidth:1,
+    },
+})
