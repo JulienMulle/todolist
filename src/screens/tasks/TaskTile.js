@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, Image, StyleSheet,View, Pressable } from 'react-native';
 
 import outline_circle from "../../../assets/Icons/outline_circle.png";
+import check_circle from "../../../assets/Icons/check_circle.png";
 import icon_bin from "../../../assets/Icons/icon_bin.png";
 
 export default function TaskTile({task, onUpdateTask, onDeleteTask}) {
@@ -20,7 +21,7 @@ export default function TaskTile({task, onUpdateTask, onDeleteTask}) {
             style={styles.subContainer}>
                 <Image
                 style={styles.check}
-                source={outline_circle}
+                source={task.isCompleted ? outline_circle : check_circle }
                 />
                 <Text style={styles.title}>{task.title}</Text>
             </Pressable> 

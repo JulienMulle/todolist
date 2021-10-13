@@ -15,6 +15,8 @@ export default function TaskForm({onAddTask}) {
         setNewTask("")
     };
 
+
+
     return (
         <View
         style={styles.container}
