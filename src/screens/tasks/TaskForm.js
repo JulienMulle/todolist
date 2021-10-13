@@ -11,9 +11,11 @@ export default function TaskForm() {
     const onAddTask= () => {
 
     }
-    
+
     return (
-        <View>
+        <View
+        style={styles.container}
+        >
             <TextInput 
             style={styles.input}
             onChangeText={onChangeText}
@@ -30,8 +32,19 @@ export default function TaskForm() {
 }
 
 const styles = StyleSheet.create({
+    container:{
+        flexDirection:"row",
+        justifyContent:"space-between",
+        alignItems:"center",
+        marginTop: 10
+        //mon padding stope mon app, chercher une solution
+        //paddingHorizontal:"20",
+    },
     input:{
         borderColor:"black",
-        borderWidth:1,
+        borderWidth: 1,
+        borderRadius: 5,
+        width: "70%",
+        height: 40
     },
 })
