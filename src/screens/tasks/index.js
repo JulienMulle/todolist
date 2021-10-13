@@ -15,6 +15,17 @@ export default function TaskScreen() {
     const renderItem = ({item}) => {
         return <TaskTile task={item}/>
     }
+
+    //ajouter une fonction pour ajouter une tache au state
+    //passer cette foncgtion à notre form
+    
+    const onAddTask= (title) => {
+        setTasks([...tasks,{
+            id: Date.now(),
+            title,
+            isCompleted: false
+        }])
+    }
     //asyncStorage
 
     return ( 
@@ -24,7 +35,7 @@ export default function TaskScreen() {
             ListHeaderComponent={
             <>
             <Header />
-            <TaskForm />
+            <TaskForm onAddTask={onAddTask}/>
             </>
             }
             contentContainerStyle={{flexGrow:1}}

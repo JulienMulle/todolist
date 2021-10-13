@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
 import { TextInput, View, StyleSheet, Button } from 'react-native';
 
-export default function TaskForm() {
-    const [newTask, setNewTask] = useState();
+export default function TaskForm({onAddTask}) {
+
+    const [newTask, setNewTask] = useState("");
 
     const onChangeText= (val) => {
         setNewTask(val)
-    }
+    };
 
-    const onAddTask= () => {
-
-    }
+    const onAddNewTask = () => {
+        if (newTask === "") return
+        onAddTask(newTask)
+        setNewTask("")
+    };
 
     return (
         <View
@@ -24,7 +27,7 @@ export default function TaskForm() {
             />
             <Button 
                 title="Ajouter"
-                onPress={onAddTask}
+                onPress={onAddNewTask}
                 color="blue"
             />
         </View>
