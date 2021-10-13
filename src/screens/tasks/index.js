@@ -7,13 +7,11 @@ import TaskTile from './TaskTile';
 export default function TaskScreen() {
     // Liste de taches
     //State pour garder en mémoire les taches
-    const [tasks, setTasks] = useState([
-        {title: "Hello l'ami du bon gout !", isCompleted: false}
-    ])
+    const [tasks, setTasks] = useState([])
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
     const renderItem = ({item}) => {
-        return <TaskTile task={item}/>
+        return <TaskTile task={item} onUpdateTask={onUpdateTask}/>
     }
 
     //ajouter une fonction pour ajouter une tache au state
@@ -25,6 +23,25 @@ export default function TaskScreen() {
             title,
             isCompleted: false
         }])
+    }
+
+    const onUpdateTask = (id) =>{
+        let newTasks = []
+
+        tasks.forEach(t=>{
+            if (t.id !== id) 
+            {
+                newTasks.push(t)
+                return
+            }
+            newTasks.push({
+                id,
+                title : t.title,
+                isCompleted : !t.isCompleted
+            })
+        })
+
+        setTasks(newTasks)
     }
     //asyncStorage
 
