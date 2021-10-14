@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet, Button } from 'react-native';
+import { TextInput, View, StyleSheet, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
 
 export default function TaskForm({onAddTask}) {
 
@@ -16,8 +16,13 @@ export default function TaskForm({onAddTask}) {
     };
 
 
-
+const twoFunction = () => {
+    onAddNewTask();
+    Keyboard.dismiss();
+}
     return (
+        //penser à remplacer view par KeyboardAvoidingView 
+        
         <View
         style={styles.container}
         >
@@ -25,14 +30,15 @@ export default function TaskForm({onAddTask}) {
             style={styles.input}
             onChangeText={onChangeText}
             value={newTask}
-            placeholder="Nouvelle Tâche"
+            placeholder=" Nouvelle Tâche"
             />
             <Button 
                 title="Ajouter"
-                onPress={onAddNewTask}
-                color="blue"
+                onPress={twoFunction} 
+                color="grey"
+                borderRadius="15"
             />
-        </View>
+        </View>     
     )
 }
 
@@ -41,15 +47,22 @@ const styles = StyleSheet.create({
         flexDirection:"row",
         justifyContent:"space-between",
         alignItems:"center",
-        marginTop: 10
+        marginBottom: 10,
+        marginLeft:10,
+        marginRight:10
         //mon padding stope mon app, chercher une solution
-        //paddingHorizontal:"20",
+        
     },
     input:{
+        backgroundColor:"snow",
         borderColor:"black",
         borderWidth: 1,
         borderRadius: 5,
         width: "70%",
         height: 40
     },
+    btn:{
+        color:"snow",
+        borderRadius:15,
+    }
 })

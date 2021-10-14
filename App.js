@@ -5,8 +5,8 @@ import TaskScreen from './src/screens/tasks';
 
  const App = () =>{
   return (
-    <SafeAreaView style={{flex:1}}>
-        <TaskScreen />
+    <SafeAreaView style={styles.app}>
+        <TaskScreen  />
     </SafeAreaView>
       
       
@@ -14,7 +14,10 @@ import TaskScreen from './src/screens/tasks';
 };
 
 const styles = StyleSheet.create({
- 
+ app:{
+  flex:1,
+   backgroundColor: '#f6f6f6'
+ }
 });
 
 export default App;

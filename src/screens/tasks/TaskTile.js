@@ -21,9 +21,9 @@ export default function TaskTile({task, onUpdateTask, onDeleteTask}) {
             style={styles.subContainer}>
                 <Image
                 style={styles.check}
-                source={task.isCompleted ? outline_circle : check_circle }
+                source={task.isCompleted ? check_circle :outline_circle   }
                 />
-                <Text style={styles.title}>{task.title}</Text>
+                <Text style={styles.title}>{task.title}</Text>  
             </Pressable> 
             <Pressable
             onPress={_onDeleteTask}
@@ -39,18 +39,25 @@ export default function TaskTile({task, onUpdateTask, onDeleteTask}) {
 
 const styles = StyleSheet.create({
     container:{
+        borderRadius:20,
+        margin:10,
+        borderWidth:1,
+        borderColor:"black",
+        backgroundColor:"snow",
         flexDirection:"row",
         alignItems:"center",
-        padding:20,
+        padding:10,
         justifyContent: "space-between",
     },
     subContainer:{
+        
         flexDirection:"row",
         alignItems:"center",
     },
     title:{
         marginLeft:20,
         fontSize: 16,
+        maxWidth: "80%"
     },
     check:{
         width:26,

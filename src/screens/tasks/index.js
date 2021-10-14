@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
+import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
-import FloatinBtn from '../../components/FloattingBtn';
+//import FloatinBtn from '../../components/FloattingBtn';
 
 export default function TaskScreen() {
     //state pour afficher le formulaire
@@ -72,7 +73,7 @@ export default function TaskScreen() {
             ListHeaderComponent={
             <>
             <Header />
-            {isFormVisible && <TaskForm onAddTask={onAddTask}/>}
+            
             </>
             }
             contentContainerStyle={{flexGrow:1}}
@@ -82,8 +83,23 @@ export default function TaskScreen() {
             keyExtractor={(_item, index) =>index.toString()}
             renderItem={renderItem}
             />
-            <FloatinBtn toggle={_toggleForm} isOpen={isFormVisible}/>
+            <View style={styles.counter}>
+            <Counter nb={tasks.length} title={"Tâches crées"}/>
+            {/*je ne veux que les elements qui on le stutus isCompleted */}
+            <Counter nb={tasks.filter(t =>t.isCompleted === true).length} title={"Tâches éffectuées"}/>
+            </View>
+            <TaskForm onAddTask={onAddTask}/>
+            
         </>
     )
 }
 
+const styles = StyleSheet.create({
+    counter:{
+        flexDirection:"row",
+        justifyContent: "space-between",
+        marginBottom:10,
+        marginTop:10,
+        paddingHorizontal:20
+    }
+})
