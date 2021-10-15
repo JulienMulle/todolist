@@ -1,5 +1,9 @@
 import React, {useState} from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
+import { useSelector } from 'react-redux';
+
+//components
+import { getTasks } from '../../redux/store';
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
@@ -11,7 +15,10 @@ export default function TaskScreen() {
     const [isFormVisible, setIsFormVisible] = useState(false)
     // Liste de taches
     //State pour garder en mémoire les taches
-    const [tasks, setTasks] = useState([])
+    const [tasks, setTasks] = useState([]);
+
+    const allTasks = useSelector(getTasks);
+    console.log("all task", allTasks);
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
     const renderItem = ({item}) => {

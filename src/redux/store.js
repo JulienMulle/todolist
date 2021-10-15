@@ -31,7 +31,7 @@ const tasksList = (state= initialState, action) => {
            return [...state,{
                id: new Date().getTime(),
                title: action.payload.title,
-               completed: isCompleted
+               isCompleted: false
            }]
         
         default:
