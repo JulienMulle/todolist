@@ -30,10 +30,10 @@ export const deleteTask = (id) =>({
     payload: {id}
 })
 //Reducers: fonctions retournent un nouveau
-const initialState = []
+const initialState = [];
 const tasksList = (state= initialState, action) => {
     switch(action.type) {
-       case ADD_TASK:
+        case ADD_TASK:
            return [
                ...state,
                {
@@ -43,18 +43,18 @@ const tasksList = (state= initialState, action) => {
                 },
         ];
         case TOGGLE_TASK:
-            let newState = []
+            let newState = [];
             state.forEach(task => {
                 if (task.id === action.payload.id) {
                 newState.push({
                     ...task,
-                    iscompleted: !task.iscompleted
-                })
-                return
+                    isCompleted: !task.isCompleted,
+                });
+                return;
             }
             newState.push(task)
-            })
-            return newState
+            });
+            return newState;
 
         case DELETE_TASK:
             return state.filter(task => task.id !== action.payload.id)

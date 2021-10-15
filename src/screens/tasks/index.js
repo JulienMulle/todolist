@@ -8,11 +8,11 @@ import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
 import TaskTile from './TaskTile';
-//import FloatinBtn from '../../components/FloattingBtn';
+
 
 export default function TaskScreen() {
     const tasks = useSelector(getTasks);
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
     const renderItem = ({item}) => {
@@ -20,16 +20,13 @@ export default function TaskScreen() {
          onUpdateTask={onUpdateTask} 
          onDeleteTask={onDeleteTask}
          />
-    }
-
+    };
     const onUpdateTask = (id) =>{
-        dispatch(toggleTask(id));
-    }
-    
+        dispatch(toggleTask(id))
+    };
     const onDeleteTask = (id) => {
-        dispatch(deleteTask(id));
-
-    }
+        dispatch(deleteTask(id))
+    };
 
     return ( 
         <>
