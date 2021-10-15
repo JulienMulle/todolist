@@ -7,7 +7,7 @@ import { createStore, combineReducers } from "redux";
 
 // stockant mon string dans une const, je reduis le nombre d'erreur
 const ADD_TASK = "ADD_TASK"
-function addTask(title) {
+export function addTask(title) {
     return{
         type: ADD_TASK,
         payload:{
