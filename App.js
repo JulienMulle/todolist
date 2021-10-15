@@ -1,15 +1,20 @@
 
 import React from 'react';
 import { SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Provider } from 'react-redux';
+
+//components
+import { store } from './src/redux/store';
 import TaskScreen from './src/screens/tasks';
+
 
  const App = () =>{
   return (
-    <SafeAreaView style={styles.app}>
+    <Provider store={store}>
+      <SafeAreaView style={styles.app}>
         <TaskScreen  />
-    </SafeAreaView>
-      
-      
+      </SafeAreaView>
+    </Provider>     
   );
 };
 
