@@ -14,8 +14,8 @@ export default function TaskScreen() {
     //state pour afficher le formulaire
     const [isFormVisible, setIsFormVisible] = useState(false)
     // Liste de taches
-    //State pour garder en mémoire les taches
-    const [tasks, setTasks] = useState([]);
+        //State pour garder en mémoire les taches
+        const [tasks, setTasks] = useState([]);
 
     const allTasks = useSelector(getTasks);
     console.log("all task", allTasks);
@@ -26,14 +26,6 @@ export default function TaskScreen() {
          onUpdateTask={onUpdateTask} 
          onDeleteTask={onDeleteTask}
          />
-    }
-    
-    const onAddTask= (title) => {
-        setTasks([...tasks,{
-            id: Date.now(),
-            title,
-            isCompleted: false
-        }])
     }
 
     const onUpdateTask = (id) =>{
@@ -94,7 +86,7 @@ export default function TaskScreen() {
             keyExtractor={(_item, index) =>index.toString()}
             renderItem={renderItem}
             />
-            <TaskForm onAddTask={onAddTask}/>
+            <TaskForm />
             
         </>
     )

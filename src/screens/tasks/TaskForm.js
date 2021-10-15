@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 
 import { addTask } from '../../redux/store';
 
-export default function TaskForm({onAddTask}) {
+export default function TaskForm() {
 
     const [newTask, setNewTask] = useState("");
     const dispatch = useDispatch()
@@ -15,8 +15,7 @@ export default function TaskForm({onAddTask}) {
 
     const onAddNewTask = () => {
         if (newTask === "") return
-        dispatch(addTask(newTask))
-        onAddTask(newTask)
+        dispatch(addTask(newTask))       
         setNewTask("")
     };
 
