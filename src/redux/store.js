@@ -60,6 +60,9 @@ const tasksList = (state= initialState, action) => {
             newState.push(task)
             })
             return newState
+
+        case DELETE_TASK:
+            return state.filter(task => task.id !== action.payload.id)
     
         default:
             return state;
