@@ -20,15 +20,20 @@ export function addTask(title) {
 }
 //action changement status d'une tache
 const TOGGLE_TASK = "TOGGLE_TASK"
-export const toggleTask = (id) =>({
-    type: TOGGLE_TASK?
+export const toggleTask = id =>({
+    type: TOGGLE_TASK,
     payload: {id}
 })
 
 //action suppression de la tache
+const DELETE_TASK = "DELETE_TASK"
+export const deleteTask = id =>({
+    type: DELETE_TASK,
+    payload: {id}
+})
 
 //Reducers: fonctions retournent un nouveau
-const initialState = [{id:1, title:"Init task", completed: false}]
+const initialState = [{id:1, title:"Init task", iscompleted: false}]
 
 const tasksList = (state= initialState, action) => {
     switch(action.type) {
@@ -48,7 +53,7 @@ const tasksList = (state= initialState, action) => {
                 if (task.id === action.payload.id) {
                 newState.push({
                     ...task,
-                    completed: !task.completed
+                    iscompleted: !task.iscompleted
                 })
                 return
             }
