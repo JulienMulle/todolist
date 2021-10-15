@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import { FlatList, StyleSheet, View } from 'react-native';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 //components
-import { getTasks } from '../../redux/store';
+import { getTasks, toggleTask } from '../../redux/store';
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
@@ -16,8 +16,8 @@ export default function TaskScreen() {
     // Liste de taches
 
 
-    const Tasks = useSelector(getTasks);
-    console.log("all task", allTasks);
+    const tasks = useSelector(getTasks);
+    const dispatch = useDispatch()
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
     const renderItem = ({item}) => {
@@ -28,26 +28,11 @@ export default function TaskScreen() {
     }
 
     const onUpdateTask = (id) =>{
-        let newTasks = []
-
-        tasks.forEach(t=>{
-            if (t.id !== id) 
-            {
-                newTasks.push(t)
-                return
-            }
-            newTasks.push({
-                id,
-                title : t.title,
-                isCompleted : !t.isCompleted
-            })
-        })
-
-        setTasks(newTasks)
+        dispatch(toggleTask(id))
     }
     
     const onDeleteTask = (id) => {
-        let newTasks = []
+        /*let newTasks = []
         tasks.forEach(t=>{
             if (t.id !== id) 
             {
@@ -55,7 +40,7 @@ export default function TaskScreen() {
             return
             }
         })
-        setTasks(newTasks)
+        setTasks(newTasks) */
 
     }
 
