@@ -1,4 +1,4 @@
-import { createStore } from "redux";
+import { createStore, combineReducers } from "redux";
 //Selectors: sélectionner une partie de notre store
 
 //Actions: fonctions qui renvoient un objet aux reducers - {type: MON_ACTION, payload : {DATA}}
@@ -16,6 +16,9 @@ const tasksList = (state= initialState, action) => {
             return state
     }
 }
-
+// on combine plusieurs reducer pour pouvoir les passés directement dans le store
+const rootReducders = combineReducers({
+    tasksList
+})
 //Store: attaché à Réact -accessible depuis tout les composants
-export const store = createStore()
+export const store = createStore(rootReducders)
