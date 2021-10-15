@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, View, StyleSheet, Button, Keyboard } from 'react-native';
 import { useDispatch } from 'react-redux';
 
-import { addTask } from '../../redux/store';
+import { addTask } from '../../redux/actions';
 
 export default function TaskForm() {
 

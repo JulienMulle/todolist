@@ -3,7 +3,8 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 //components
-import { getTasks, toggleTask, deleteTask } from '../../redux/store';
+import { toggleTask, deleteTask } from '../../redux/actions';
+import { getTasks } from '../../redux/selectors'
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
