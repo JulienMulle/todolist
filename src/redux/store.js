@@ -6,7 +6,6 @@ export const getCompletedTasks = sotre => sotre.tasksList.filter(task => task.co
 //Actions: fonctions qui renvoient un objet aux reducers - {type: MON_ACTION, payload : {DATA}}
 
 //action ajout d'une tache
-
 // stockant mon string dans une const, je reduis le nombre d'erreur
 const ADD_TASK = "ADD_TASK"
 export function addTask(title) {
@@ -20,21 +19,18 @@ export function addTask(title) {
 }
 //action changement status d'une tache
 const TOGGLE_TASK = "TOGGLE_TASK"
-export const toggleTask = id =>({
+export const toggleTask = (id) =>({
     type: TOGGLE_TASK,
     payload: {id}
 })
-
 //action suppression de la tache
 const DELETE_TASK = "DELETE_TASK"
-export const deleteTask = id =>({
+export const deleteTask = (id) =>({
     type: DELETE_TASK,
     payload: {id}
 })
-
 //Reducers: fonctions retournent un nouveau
-const initialState = [{id:1, title:"Init task", iscompleted: false}]
-
+const initialState = []
 const tasksList = (state= initialState, action) => {
     switch(action.type) {
        case ADD_TASK:
@@ -48,7 +44,6 @@ const tasksList = (state= initialState, action) => {
         ];
         case TOGGLE_TASK:
             let newState = []
-
             state.forEach(task => {
                 if (task.id === action.payload.id) {
                 newState.push({

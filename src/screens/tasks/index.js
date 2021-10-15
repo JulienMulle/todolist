@@ -3,7 +3,7 @@ import { FlatList, StyleSheet, View } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 
 //components
-import { getTasks, toggleTask } from '../../redux/store';
+import { getTasks, toggleTask, deleteTask } from '../../redux/store';
 import Counter from '../../components/Counter';
 import Header from '../../components/Header';
 import TaskForm from './TaskForm';
@@ -11,11 +11,6 @@ import TaskTile from './TaskTile';
 //import FloatinBtn from '../../components/FloattingBtn';
 
 export default function TaskScreen() {
-    //state pour afficher le formulaire
-    const [isFormVisible, setIsFormVisible] = useState(false)
-    // Liste de taches
-
-
     const tasks = useSelector(getTasks);
     const dispatch = useDispatch()
 
@@ -28,24 +23,12 @@ export default function TaskScreen() {
     }
 
     const onUpdateTask = (id) =>{
-        dispatch(toggleTask(id))
+        dispatch(toggleTask(id));
     }
     
     const onDeleteTask = (id) => {
-        /*let newTasks = []
-        tasks.forEach(t=>{
-            if (t.id !== id) 
-            {
-            newTasks.push(t)
-            return
-            }
-        })
-        setTasks(newTasks) */
+        dispatch(deleteTask(id));
 
-    }
-
-    const _toggleForm = () => {
-        setIsFormVisible(!isFormVisible)
     }
 
     return ( 
