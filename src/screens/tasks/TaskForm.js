@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet, Button, Keyboard, TouchableWithoutFeedback } from 'react-native';
+import { TextInput, View, StyleSheet, Button, Keyboard } from 'react-native';
+import { useDispatch } from 'react-redux';
 
-export default function TaskForm({onAddTask}) {
+import { addTask } from '../../redux/actions';
+
+export default function TaskForm() {
 
     const [newTask, setNewTask] = useState("");
+    const dispatch = useDispatch()
 
     const onChangeText= (val) => {
         setNewTask(val)
@@ -11,7 +15,7 @@ export default function TaskForm({onAddTask}) {
 
     const onAddNewTask = () => {
         if (newTask === "") return
-        onAddTask(newTask)
+        dispatch(addTask(newTask))       
         setNewTask("")
     };
 
