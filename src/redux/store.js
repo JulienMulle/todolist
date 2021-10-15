@@ -19,6 +19,11 @@ export function addTask(title) {
     }
 }
 //action changement status d'une tache
+const TOGGLE_TASK = "TOGGLE_TASK"
+export const toggleTask = (id) =>({
+    type: TOGGLE_TASK?
+    payload: {id}
+})
 
 //action suppression de la tache
 
@@ -28,16 +33,33 @@ const initialState = [{id:1, title:"Init task", completed: false}]
 const tasksList = (state= initialState, action) => {
     switch(action.type) {
        case ADD_TASK:
-           return [...state,{
+           return [
+               ...state,
+               {
                id: new Date().getTime(),
                title: action.payload.title,
-               isCompleted: false
-           }]
-        
+               isCompleted: false,
+                },
+        ];
+        case TOGGLE_TASK:
+            let newState = []
+
+            state.forEach(task => {
+                if (task.id === action.payload.id) {
+                newState.push({
+                    ...task,
+                    completed: !task.completed
+                })
+                return
+            }
+            newState.push(task)
+            })
+            return newState
+    
         default:
-            return state
+            return state;
     }
-}
+};
 // on combine plusieurs reducer pour pouvoir les passés directement dans le store
 const rootReducders = combineReducers({
     tasksList

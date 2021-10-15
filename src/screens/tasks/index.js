@@ -14,10 +14,9 @@ export default function TaskScreen() {
     //state pour afficher le formulaire
     const [isFormVisible, setIsFormVisible] = useState(false)
     // Liste de taches
-        //State pour garder en mémoire les taches
-        const [tasks, setTasks] = useState([]);
 
-    const allTasks = useSelector(getTasks);
+
+    const Tasks = useSelector(getTasks);
     console.log("all task", allTasks);
 
     //item sera un élément du tableau : {title: "Hello l'ami du bon gout !", isCompleted: false}
