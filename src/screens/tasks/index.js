@@ -73,7 +73,11 @@ export default function TaskScreen() {
             ListHeaderComponent={
             <>
             <Header />
-            
+            <View style={styles.counter}>
+            <Counter nb={tasks.length} title={"Tâches crées"}/>
+            {/*je ne veux que les elements qui on le status isCompleted */}
+            <Counter nb={tasks.filter(t =>t.isCompleted === true).length} title={"Tâches éffectuées"}/>
+            </View>
             </>
             }
             contentContainerStyle={{flexGrow:1}}
@@ -83,11 +87,6 @@ export default function TaskScreen() {
             keyExtractor={(_item, index) =>index.toString()}
             renderItem={renderItem}
             />
-            <View style={styles.counter}>
-            <Counter nb={tasks.length} title={"Tâches crées"}/>
-            {/*je ne veux que les elements qui on le stutus isCompleted */}
-            <Counter nb={tasks.filter(t =>t.isCompleted === true).length} title={"Tâches éffectuées"}/>
-            </View>
             <TaskForm onAddTask={onAddTask}/>
             
         </>
